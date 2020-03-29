@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "9838a62f-3165-4251-bde8-4412359732cf",
+		"name": "People Care",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"contato@apad.com.br\",\n\t\"password\": \"P@ssw0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Route to execute the authentication and return a JWT token, when successfully authenticated"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Incidents",
+			"item": [
+				{
+					"name": "List all Incidents of a Given ONG",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/incidents",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"incidents"
+							]
+						},
+						"description": "Route responsable for listing all the incidents of a given ONG. The ONG will be given by the authentication bearer token"
+					},
+					"response": []
+				},
+				{
+					"name": "Create one Incident in a Given ONG",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Caso 1\",\n\t\"description\": \"Detalhes do caso\",\n\t\"value\": 120\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/incidents",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"incidents"
+							]
+						},
+						"description": "Route responsable for creating one incident in a given ONG. The ONG will be given by the authentication bearer token"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one Incident from a Given ONG",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/incidents/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"incidents",
+								"1"
+							]
+						},
+						"description": "Route for deleting one incident from a given ONG. The ONG will be given by the authentication bearer token"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ONGs",
+			"item": [
+				{
+					"name": "List all ONGs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/ongs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"ongs"
+							]
+						},
+						"description": "Route for listing all ONGs available"
+					},
+					"response": []
+				},
+				{
+					"name": "Create one ONG",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"APAD\",\n\t\"email\": \"contato@apad.com.br\",\n\t\"password\": \"P@ssw0rd\",\n\t\"whatsapp\": \"51000000000\",\n\t\"city\": \"Novo Hamburgo\",\n\t\"uf\": \"RS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/ongs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"ongs"
+							]
+						},
+						"description": "Route for creating one ONG resource"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
